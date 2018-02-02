@@ -1,14 +1,14 @@
 # Checkpoint Test
 
 This is an open-book **checkpoint** test focusing on building a
-simple TODO ruby app using ActiveRecord with SQL database.
+simple Spotify Playlist ruby app using ActiveRecord with SQL database.
 
 # Purpose
 The test is to ensure that you are familiar with the basics of ActiveRecord,
 and how it works with database (sqlite3 in this case) using Ruby.
 
 # Assessment Time
-10:00am - 4:00pm
+9:30am - 12:30pm
 
 # To start:
 1) FORK this repo out by clicking the "**Fork**" button on the top right side of the GitHub page.
@@ -28,7 +28,7 @@ $ git clone <your repo address>
 $ cd <repo-name>
 ```
 
-4) Start writing your code on "todo.rb" file
+4) Start writing your code on "spotify.rb" file
 
 ```
 Remember to commit small and often. Some good references:
@@ -49,123 +49,124 @@ $ git push origin master
 
 Example:
 
-## 1) User is able to add new task into the todo list
+## 1) User is able to add new song into the Spotify list
 
 ```
-$ruby todo.rb --add <Description> <Status> 
+$ruby spotify.rb --add <Song Name> <Played Status> 
 ```
-
-Example:
-
-```
-$ ruby todo.rb --add "buy groceries" "undone"
-$ ruby todo.rb --add "fuel my car" "undone"
-```
-
-## 2) User is able to list all the tasks:
-```
-$ ruby todo.rb --list
-```
-```
-No.   Description     Status
-===   ===========     =====
-1.    Buy Groceries   Undone
-2.    Fuel My Car     Undone
-```
-
-
-## 3) User is able to update the task descriptions and status
-
-```
-ruby todo.rb --update <No.> <Description> <Status>
-```
-
-This will update the task description with the mentioned task number.
-If the task is not found, a friendly error should be raised.
 
 Example:
 
 ```
-$ ruby todo.rb --list
-```
-```
-No.   Description     Status
-===   ===========     =====
-1.    Buy Groceries   Undone
-2.    Fuel My Car     Undone
+$ ruby spotify.rb --add "uptown girl" "no"
+$ ruby spotify.rb --add "sexy back" "no"
 ```
 
+## 2) User is able to list all the songs:
 ```
-$ ruby todo.rb --update 1 "Buy Fruits" "Done"
-```
-```
-$ ruby todo.rb --list
+$ ruby spotify.rb --list
 ```
 ```
-No.   Description     Status
-===   ===========     =====
-1.    Buy Fruits      Done
-2.    Fuel My Car     Undone
-```
-
-```
-$ ruby todo.rb --update 4
-```
-
-```
-> Task number 4 is not found. Are you sure that this is the right task number?
+No.   Song Name       Played Status
+===   ===========     =============
+1.    Uptown Girl     No
+2.    Sexy Back       No
 ```
 
 
-## 4) User is able to remove any task from todo list
+## 3) User is able to update the song names and status
 
 ```
-ruby todo.rb --remove <No.>
+ruby spotify.rb --update <No.> <Song Name> <Played Status>
 ```
 
-This will delete the task with the corresponding number from the list.
-If the task is not found, a friendly error should be raised.
+This will update the song description with the mentioned song number.
+If the song is not found, a friendly error should be raised.
 
 Example:
 
 ```
-$ ruby todo.rb --list
+$ ruby spotify.rb --list
+```
+```
+No.   Song Name       Played Status
+===   ===========     =============
+1.    Uptown Girl     No
+2.    Sexy Back       No
 ```
 
 ```
-No.   Description     Status
-===   ===========     =====
-1.    Buy Groceries   Done
-2.    Fuel My Car     Undone
+$ ruby spotify.rb --update 1 "Sugar" "Yes"
+```
+```
+$ ruby spotify.rb --list
+```
+```
+No.   Song Name       Played Status
+===   ===========     =============
+1.    Sugar           Yes
+2.    Sexy Back       No
 ```
 
 ```
-$ ruby todo.rb --remove 1
+$ ruby spotify.rb --update 4
 ```
 
 ```
-$ ruby todo.rb --list
+> Song number 4 is not found. Are you sure that this is the right song number?
+```
+
+
+## 4) User is able to remove any song from spotify list
+
+```
+ruby spotify.rb --remove <No.>
+```
+
+This will delete the song with the corresponding number from the list.
+If the song is not found, a friendly error should be raised.
+
+Example:
+
+```
+$ ruby spotify.rb --list
 ```
 
 ```
-No.   Description     Status
-===   ===========     =====
-1.    Fuel My Car     Undone
+No.   Song Name       Played Status
+===   ===========     =============
+1.    Sugar           Yes
+2.    Sexy Back       No
 ```
 
 ```
-$ ruby todo.rb --remove 3
+$ ruby spotify.rb --remove 1
 ```
 
-Task number 3 is not found. Are you sure that this is the right task number?
+```
+$ ruby spotify.rb --list
+```
 
+```
+No.   Song Name       Played Status
+===   ===========     =============
+1.    Sexy Back       No
+```
+
+```
+$ ruby spotify.rb --remove 3
+```
+
+```
+> Song number 3 is not found. Are you sure that this is the right song number?
+```
 
 
 **IMPORTANT NOTE**:
 
-- Take note of the Task number. Upon deletion, it should be SELF-UPDATED in an ascending order.
-  Hmm, but changing the task's id inside your database is never a good idea.
-  How can you self-update the number without changing the task's id?
+- Take note of the Song number. Upon deletion, it should be SELF-UPDATED in an ascending order.
+  Hmm, but changing the song's id inside your database is never a good idea.
+  How can you self-update the number without changing the song's id?
 
 
 At the end of this assessment, you should be able to:
