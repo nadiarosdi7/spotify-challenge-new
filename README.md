@@ -161,6 +161,19 @@ $ ruby spotify.rb --remove 3
 > Song number 3 is not found. Are you sure that this is the right song number?
 ```
 
+## 5) The list is sorted where unplayed song are always at the top
+
+```
+$ ruby spotify.rb --list
+```
+
+```
+No.   Song Name       Played Status
+===   ===========     =============
+1.    Sexy Back       No
+2.    Sugar           Yes
+3.    Let It Go       Yes
+```
 
 **IMPORTANT NOTE**:
 
