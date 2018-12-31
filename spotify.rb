@@ -31,7 +31,9 @@ def display_list
 	
 end
 
-
+def add_list(sentence)
+	Song.add sentence
+end
 
 
 if ARGV[0] == "list"
@@ -39,6 +41,7 @@ if ARGV[0] == "list"
 	display_list
 elsif ARGV[0] == "add"
 	puts "adding song..."
+	add_list ARGV[1..-1]
 elsif ARGV[0] == "update"
 	puts "updating song name or played status..."
 elsif ARGV[0] == "remove"
