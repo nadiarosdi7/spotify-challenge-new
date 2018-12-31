@@ -35,6 +35,10 @@ def add_list(sentence)
 	Song.add sentence
 end
 
+def remove_list(task_id)
+	Song.remove task_id
+end
+
 
 if ARGV[0] == "list"
 	puts "listing all songs..."
@@ -46,6 +50,7 @@ elsif ARGV[0] == "update"
 	puts "updating song name or played status..."
 elsif ARGV[0] == "remove"
 	puts "deleting a song..."
+	remove_list ARGV[1]
 elsif ARGV[0] == "sort"
 	puts "sorting all songs..."
 else
