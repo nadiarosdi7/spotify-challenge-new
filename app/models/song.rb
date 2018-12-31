@@ -36,4 +36,15 @@ class Song < ActiveRecord::Base
 		update_song.update(played_status: played_status)
 	end
 
+	def self.sort
+		songs = Song.all
+		song_order = songs.order(:played_status)
+		index = 1
+
+		song_order.each do |song| 
+		puts index.to_s.ljust(5)+ "#{song.song_name}".ljust(30) + "#{song.played_status}".rjust(5)
+		index +=1
+		end
+	end
+
 end

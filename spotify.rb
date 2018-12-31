@@ -23,10 +23,12 @@ require 'active_record'
 def display_list
 	songs = Song.list
 
+
+
 	if songs.empty?
 		puts "You have no song. Kindly add"
 	else
-		songs.each_with_index { |item, index| puts "#{index+1}. #{item.song_name}"}
+		songs.each_with_index { |song, index| puts "#{index+1}".ljust(5)+ "#{song.song_name}".ljust(30) + "#{song.played_status}".rjust(5)}
 	end
 	
 end
@@ -48,7 +50,9 @@ def update_list(song_id, title, played_status)
 	Song.update song_id, title, played_status
 end
 
-
+def sort_list
+	Song.sort
+end
 
 
 
@@ -68,25 +72,12 @@ elsif ARGV[0] == "remove"
 	remove_list ARGV[1]
 elsif ARGV[0] == "sort"
 	puts "sorting all songs..."
+	sort_list
+
 else
 	puts "Invalid entry. Kindly enter a valid entry"
 end
 
 
 
-def self.complete(task_id)
-    task = find_task task_id
-
-    if task
-      update_result = task.update_attributes completed: true
-      if update_result
-        TasksView.display_notice "Completed '#{task.name}' from your TODO list..."
-      else
-        TasksView.display_notice "Error: Something went wrong. Please try again later."
-      end
-    else
-      TasksView.display_notice "Error: invalid task ID provided."
-    end
-
-  end
 
