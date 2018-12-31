@@ -195,3 +195,15 @@ At the end of this assessment, you should be able to:
 ```
 
 # Good Luck!!!
+
+
+
+#Nadia notes:
+1. Run bundle
+2. Rake db:create
+3. Rake db:migrate
+4. Create application file;
+	a) spotify.rb as main program ARGV, list, add, update, remove
+	b) models file : song.rb 
+	c) seed database; rake db:seed
+	
