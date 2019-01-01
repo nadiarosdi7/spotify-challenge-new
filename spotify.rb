@@ -23,8 +23,6 @@ require 'active_record'
 def display_list
 	songs = Song.list
 
-
-
 	if songs.empty?
 		puts "You have no song. Kindly add"
 	else
@@ -38,16 +36,18 @@ end
 # end
 
 def add_list(title, played_status)
-	Song.add title, played_status
+	Song.add(title, played_status)
 end
 
 
 def remove_list(song_id)
-	Song.remove song_id
+	Song.remove(song_id)
 end
 
 def update_list(song_id, title, played_status)
-	Song.update song_id, title, played_status
+	songs = Song.all
+	song  = songs[song_id.to_i-1]
+	song.update(song_name: title, played_status: played_status)
 end
 
 def sort_list
@@ -62,14 +62,14 @@ if ARGV[0] == "list"
 elsif ARGV[0] == "add"
 	# puts "adding song..."
 	# add_list ARGV[1..-1] - mula2
-	add_list ARGV[1], ARGV[2]
+	add_list(ARGV[1], ARGV[2])
 
 elsif ARGV[0] == "update"
 	puts "updating song name or played status..."
-	update_list ARGV[1], ARGV[2], ARGV[3]
+	update_list(ARGV[1], ARGV[2], ARGV[3])
 elsif ARGV[0] == "remove"
 	puts "deleting a song..."
-	remove_list ARGV[1]
+	remove_list(ARGV[1])
 elsif ARGV[0] == "sort"
 	puts "sorting all songs..."
 	sort_list
